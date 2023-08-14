@@ -1,11 +1,11 @@
-package thespot.repositories;
+package com.thespot.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import thespot.entities.User;
+import com.thespot.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
+	User findByUsername(String username);	
 	
-	User findByUsername(String username);
-
+	
 }

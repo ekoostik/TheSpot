@@ -1,9 +1,8 @@
-package thespot.services;
+package com.thespot.services;
 
-import thespot.entities.User;
+import com.thespot.entities.User;
 
 public interface AuthService {
-	
 	public User register(User user);
 	public User getUserByUsername(String username);
 

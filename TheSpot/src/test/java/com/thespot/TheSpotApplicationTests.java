@@ -1,4 +1,4 @@
-package thespot;
+package com.thespot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

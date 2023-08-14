@@ -1,4 +1,4 @@
-package thespot.security;
+package com.thespot.security;
 
 import javax.sql.DataSource;
 
@@ -28,15 +28,19 @@ public class SecurityConfig {
         http
         .csrf().disable()
         .authorizeRequests()
-        .requestMatchers(HttpMethod.OPTIONS, "/api/**").permitAll() // For CORS, the preflight request
-        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()     // will hit the OPTIONS on the route
-        .requestMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
+        .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll() // For CORS, the preflight request
+        .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()     // will hit the OPTIONS on the route
+        .antMatchers(HttpMethod.GET, "/api/trips/**").permitAll()
+
+        .antMatchers(HttpMethod.GET, "/api/destinations/**").permitAll()
+
+        .antMatchers("/api/**").authenticated()         // Requests for our REST API must be authorized.
+
         .anyRequest().permitAll()               // All other requests are allowed without authentication.
         .and()
         .httpBasic();                           // Use HTTP Basic Authentication
 
         http
-       
         .sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         

@@ -1,6 +1,9 @@
 package thespot.entities;
 
-import static org.junit.jupiter.api.Assertions.fail;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,6 +15,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.thespot.entities.User;
+
 class UserTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
@@ -19,7 +24,7 @@ class UserTest {
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("TodoJPA");
+		emf = Persistence.createEntityManagerFactory("TheSpotJPA");
 	}
 
 	@AfterAll
@@ -40,8 +45,15 @@ class UserTest {
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void testUserMap() {
+		assertNotNull(user);
+		assertEquals("Brittany", user.getFirstName());
+	}
+	@Test
+	
+	void testUserLastName() {
+		assertNotNull(user);
+		assertEquals("Piacente", user.getLastName());
 	}
 
 }

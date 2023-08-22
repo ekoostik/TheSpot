@@ -8,6 +8,10 @@
 
 		
 	<class>com.thespot.entities.User</class>
+	<class>com.thespot.entities.Post</class>
+	<class>com.thespot.entities.Comment</class>
+	<class>com.thespot.entities.Message</class>
+	<class>com.thespot.entities.Category</class>
 
 	
 	

@@ -1,9 +1,8 @@
 package thespot.entities;
 
-
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,12 +14,14 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.thespot.entities.User;
+import com.thespot.entities.Message;
 
-class UserTest {
+
+
+class MessageTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private User user;
+	private Message message;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -35,25 +36,19 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		user = em.find(User.class, 1);
+		message = em.find(Message.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		user = null;
+		message = null;
 	}
 
 	@Test
-	void testUserMap() {
-		assertNotNull(user);
-		assertEquals("Brittany", user.getFirstName());
-	}
-	@Test
-	void testUserLastName() {
-	
-		assertNotNull(user);
-		assertEquals("Piacente", user.getLastName());
+	void test() {
+		assertNotNull(message);
+		assertEquals("test message 1", message.getBody());
 	}
 
 }

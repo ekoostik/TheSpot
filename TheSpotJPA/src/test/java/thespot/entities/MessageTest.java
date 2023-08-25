@@ -50,5 +50,18 @@ class MessageTest {
 		assertNotNull(message);
 		assertEquals("test message 1", message.getBody());
 	}
+	
+	@Test
+	void testSenderMap() {
+		assertNotNull(message);
+		assertEquals("Brittany", message.getSender().getFirstName());
+	}
+	
+	@Test
+	void testReciverMap() {
+		assertNotNull(message.getReciver());
+		assertEquals("David", message.getReciver().getFirstName());
+		
+	}
 
 }

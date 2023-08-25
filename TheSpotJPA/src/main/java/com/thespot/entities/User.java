@@ -1,6 +1,7 @@
 package com.thespot.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -37,6 +39,12 @@ public class User {
 	@CreationTimestamp
 	@Column(name="join_date")
 	private LocalDateTime joinDate;
+	
+	@OneToMany(mappedBy = "user")
+	private List<Post> posts;
+	
+	@OneToMany(mappedBy="user")
+	private List<Comment> comments;
 	
 	public User() {}
 
@@ -124,6 +132,22 @@ public class User {
 
 	public void setJoinDate(LocalDateTime joinDate) {
 		this.joinDate = joinDate;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	@Override

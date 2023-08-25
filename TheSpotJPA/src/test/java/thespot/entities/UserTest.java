@@ -3,6 +3,7 @@ package thespot.entities;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
@@ -54,6 +55,19 @@ class UserTest {
 	
 		assertNotNull(user);
 		assertEquals("Piacente", user.getLastName());
+	}
+	
+	@Test
+	void testPostMap() {
+		assertNotNull(user.getPosts());
+		assertFalse(user.getPosts().isEmpty());
+	}
+	
+	@Test
+	void testCommentMap() {
+		user = em.find(User.class,2);
+		assertNotNull(user.getComments());
+		assertFalse(user.getComments().isEmpty());
 	}
 
 }

@@ -1,11 +1,13 @@
 package com.thespot.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Category {
@@ -14,6 +16,9 @@ public class Category {
 	private int id;
 	
 	private String type;
+	
+	@ManyToMany(mappedBy="categories")
+	private List<Post>posts;
 	
 	public Category() {
 		
@@ -39,6 +44,14 @@ public class Category {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override

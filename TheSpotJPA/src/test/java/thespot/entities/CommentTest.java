@@ -47,5 +47,15 @@ class CommentTest {
 		assertEquals("first comment!", comment.getBody());
 		
 	}
+	@Test
+	void testUserMap() {
+		assertNotNull(comment.getUser());
+		assertEquals("David", comment.getUser().getFirstName());
+	}
 
+	@Test
+	void testPostMap() {
+		assertNotNull(comment.getPost());
+		assertEquals("Brittany", comment.getPost().getUser().getFirstName() );
+	}
 }

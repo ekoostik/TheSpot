@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -26,6 +28,14 @@ public class Message {
 	
 	@Column(name="is_read")
 	private Boolean read;
+	
+	@ManyToOne
+	@JoinColumn(name="sender_id")
+	private User sender;
+	
+	@ManyToOne
+	@JoinColumn(name="reciver_id")
+	private User reciver;
 	
 	public Message() {}
 
@@ -67,6 +77,22 @@ public class Message {
 
 	public void setRead(Boolean read) {
 		this.read = read;
+	}
+
+	public User getSender() {
+		return sender;
+	}
+
+	public void setSender(User sender) {
+		this.sender = sender;
+	}
+
+	public User getReciver() {
+		return reciver;
+	}
+
+	public void setReciver(User reciver) {
+		this.reciver = reciver;
 	}
 
 	@Override

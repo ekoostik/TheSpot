@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -23,6 +25,14 @@ public class Comment {
 	@CreationTimestamp
 	@Column(name="comment_date")
 	private LocalDateTime commentDate;
+	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="post_id")
+	private Post post;
 	
 	public Comment() {}
 
@@ -55,6 +65,22 @@ public class Comment {
 
 	public void setCommentDate(LocalDateTime commentDate) {
 		this.commentDate = commentDate;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
 	}
 
 	@Override

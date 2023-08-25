@@ -1,6 +1,7 @@
 package thespot.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -48,6 +49,22 @@ class PostTest {
 	void testPostMap() {
 		assertNotNull(post);
 		assertEquals("Welcome post", post.getTitle());
+	}
+	
+	@Test 
+	void testUserMap() {
+		assertNotNull(post.getUser());
+		assertEquals("Brittany", post.getUser().getFirstName());
+	}
+	@Test
+	void testCommentMap() {
+		assertNotNull(post.getComments());
+		assertFalse(post.getComments().isEmpty());
+	}
+	@Test
+	void testCategoryMap() {
+		assertNotNull(post.getCategories());
+		assertFalse(post.getCategories().isEmpty());
 	}
 
 }

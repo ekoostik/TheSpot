@@ -1,6 +1,7 @@
 package thespot.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
@@ -15,8 +16,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.thespot.entities.Category;
-
-
 
 class CategoryTest {
 	private static EntityManagerFactory emf;
@@ -49,6 +48,12 @@ class CategoryTest {
 	void test() {
 		assertNotNull(category);
 		assertEquals("General", category.getType());
+	}
+
+	@Test
+	void testPostMap() {
+		assertNotNull(category.getPosts());
+		assertFalse(category.getPosts().isEmpty());
 	}
 
 }

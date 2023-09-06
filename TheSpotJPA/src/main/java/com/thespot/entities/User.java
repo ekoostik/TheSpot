@@ -13,6 +13,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class User {
 	
@@ -40,9 +42,11 @@ public class User {
 	@Column(name="join_date")
 	private LocalDateTime joinDate;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Post> posts;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="user")
 	private List<Comment> comments;
 	

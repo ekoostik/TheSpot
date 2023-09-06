@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, catchError, throwError, tap } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { User } from '../models/user';
+import { Buffer } from 'buffer';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,7 @@ export class AuthService {
 
   login(username: string, password: string): Observable<User> {
     // Make credentials
+    console.log(username, password)
     const credentials = this.generateBasicAuthCredentials(username, password);
     // Send credentials as Authorization header specifying Basic HTTP authentication
     const httpOptions = {

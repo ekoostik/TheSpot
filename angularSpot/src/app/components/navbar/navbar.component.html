@@ -13,9 +13,7 @@
           <a class="nav-link" href="#">Forum</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="false">Disabled</a>
-        </li>
+
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -26,9 +24,9 @@
           Account
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="nav-link" [routerLink]="['/login']">Login</a></li>
+          <li *ngIf="!loggedIn()"><a class="nav-link"  [routerLink]="['/login']">Login</a></li>
+          <li *ngIf="loggedIn()"><a class="dropdown-item" (click)="logout()">Log out</a></li>
           <li><a class="dropdown-item" href="#">Register</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
         </ul>
       </div>
 
